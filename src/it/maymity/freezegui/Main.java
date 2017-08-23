@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin implements Listener {
 
     Logger log;
-    public static int config_version = 1;
+    public static double config_version = 1.2;
 
     public void onEnable() {
         System.out.println("FreezeGUI > Start plugin...");
@@ -27,13 +27,38 @@ public class Main extends JavaPlugin implements Listener {
         registerExecutors();
         System.out.println("FreezeGUI > Command registred!");
 
+        SpigotUpdater updater = new SpigotUpdater(this, 46176);
+        try {
+            if (updater.checkForUpdates()) {
+                System.out.println("========================================================");
+                System.out.println("FreezeGUI Update Checker");
+                System.out.println("There is a new update available");
+                System.out.println("Latest Version: " + updater.getLatestVersion());
+                System.out.println("Your Version: " + updater.getPlugin().getDescription().getVersion());
+                System.out.println("Get it here: " + updater.getResourceURL());
+                System.out.println("========================================================");
+            }
+            else{
+                System.out.println("========================================================");
+                System.out.println("FreezeGUI Update Checker");
+                System.out.println("You are using the latest version!");
+                System.out.println("========================================================");
+            }
+        } catch (Exception e) {
+            System.out.println("========================================================");
+            System.out.println("FreezeGUI Update Checker");
+            System.out.println("Could not connect to Spigot's API!");
+            System.out.println("Error: ");
+            e.printStackTrace();
+            System.out.println("========================================================");
+        }
+
         System.out.println("FreezeGUI > Plugin enabled!");
         System.out.println("FreezeGUI > Plugin created by Maymity!");
 
 
-        if ((!Utils.getInstance().getConfig().contains("settings.config_version")) || (Utils.getInstance().getConfig().getInt("settings.config_version") < config_version))
-        {
-            this.log.warning("&cYou config is out of date, regenerate you config file. Your version: &a" + Utils.getInstance().getConfig().getInt("settings.config_version") + " &cnewest version: &a" + config_version);
+        if ((!Utils.getInstance().getConfig().contains("settings.config_version")) || (Utils.getInstance().getConfig().getDouble("settings.config_version") < config_version)) {
+            this.log.warning("&cYou config is out of date, regenerate you config file. Your version: &a" + Utils.getInstance().getConfig().getDouble("settings.config_version") + " &cnewest version: &a" + config_version);
         }
 
         getConfig().options().copyDefaults(true);

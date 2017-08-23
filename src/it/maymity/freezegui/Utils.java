@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -94,5 +95,15 @@ public class Utils {
         setinvItem(sure, "suregui",1);
         setinvItem(sure, "suregui",2);
         return sure;
+    }
+
+    public void sendPluginMessage(Player p, String s){
+        String prefix = getInstance().getConfig().getString("prefix");
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + s));
+    }
+
+    public void sendPluginSenderMessage(CommandSender p, String s){
+        String prefix = getInstance().getConfig().getString("prefix");
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + s));
     }
 }

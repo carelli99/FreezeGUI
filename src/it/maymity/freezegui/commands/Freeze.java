@@ -1,7 +1,6 @@
 package it.maymity.freezegui.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,36 +18,36 @@ public class Freeze implements CommandExecutor {
                     if(target != null) {
                         if (target.isOnline()) {
                             if (player.getName().equals(target.getName())) {
-                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.no_freeze_yourself")));
+                                Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.no_freeze_yourself"));
                             } else if (target.hasPermission("freezegui.use")) {
-                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.no_freeze_player")));
+                                Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.no_freeze_player"));
                             } else if (Utils.getInstance().getFreezeList().contains(target)) {
-                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.already_freeze")));
+                                Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.already_freeze"));
                             } else {
-                                player.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.freeze_message").replaceAll("%player%", target.getName())));
+                                Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.freeze_message").replaceAll("%player%", target.getName()));
                                 Utils.getInstance().setFreeze(target);
-                                target.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.notifyfreeze_message")));
+                                Utils.getInstance().sendPluginMessage(target, Utils.getInstance().getConfig().getString("messages.notifyfreeze_message"));
                                 target.openInventory(Utils.getInstance().getFreezeInventory());
                             }
                         }
                         else
-                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.player_not_found")));
+                            Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.player_not_found"));
                     }
                     else
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.player_not_found")));
+                        Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.player_not_found"));
                 }else
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',Utils.getInstance().getConfig().getString("messages.no_permission")));
+                    Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.no_permission"));
             }
 
             if (args.length == 0) {
                     if (player.hasPermission("freezegui.use"))
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',Utils.getInstance().getConfig().getString("messages.freeze_usage")));
+                        Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.freeze_usage"));
                     else
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.no_permission")));
+                        Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.no_permission"));
                 }
             }
         else
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("messages.must_player")));
+            Utils.getInstance().sendPluginSenderMessage(sender, Utils.getInstance().getConfig().getString("messages.must_player"));
             return true;
         }
     }
