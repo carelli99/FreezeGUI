@@ -1,0 +1,79 @@
+settings.config_version: 1.1
+
+messages:
+ no_permission: '&cYou don''t have permission to perform this command!'
+ freeze_usage: '&cCorrect usage: /freeze (Player Name)'
+ unfreeze_usage: '&cCorrect usage: /unfreeze (Player Name)'
+ no_freeze_yourself: '&cYou can''t Freeze yourself!'
+ no_freeze_player: '&cYou can''t Freeze this player!'
+ no_unfreeze_player: '&cYou can''t Unfreeze this player!'
+ already_freeze: '&cThis player is already Freezed!'
+ no_freeze: '&cThis player isn''t Freezed!'
+ freeze_message: '&cYou have freezed &e%player%!'
+ unfreeze_message: '&cYou have unfreezed &e%player%!'
+ player_not_found: '&cPlayer not found!'
+ must_player: '&cYou must be a player to perform this command!'
+ quit_message: '&e%player% &7e'' uscito mentre era in Freeze!'
+ notifyfreeze_message: '&cYou are now &eFreezed!'
+ notifyunfreeze_message: '&cYou are now &eUnFreezed!'
+
+commands:
+ punish_command: 'tempban %player% 7d Hack'
+ slog_command: 'tempban %player% 10d Hack'
+
+freezegui:
+ display_name: '&c&lYou are now Freezed'
+ Items:
+  1:
+   material: CHEST
+   damage: 0
+   amount: 1
+   name: '&c&lADMITTED CHEAT'
+   slot: 2
+   lore:
+   - '&cIf you click here, your ban'
+   - '&7will be reduced'
+  2:
+   material: BOOK
+   damage: 0
+   amount: 1
+   name: '&c&lJOIN TS'
+   slot: 4
+   lore:
+   - '&cYou are now Freezed'
+   - '&7Join in Ts'
+   - ''
+   - '&a&lts.example.com'
+   - '&c&lSLOG=BAN'
+  3:
+   material: BOOK
+   damage: 0
+   amount: 1
+   name: '&c&lJOIN TS'
+   slot: 6
+   lore:
+   - '&cYou are now Freezed'
+   - '&7Join in Ts'
+   - ''
+   - '&a&lts.example.com'
+   - '&c&lSLOG=BAN'
+
+suregui:
+ display_name: '&c&lConfirm?'
+ Items:
+  1:
+   material: WOOL
+   damage: 13
+   amount: 1
+   name: '&c&lYes'
+   slot: 2
+   lore:
+   - '&cConfirm that you are using Hack'
+  2:
+   material: WOOL
+   damage: 14
+   amount: 1
+   name: '&c&lNo'
+   slot: 6
+   lore:
+   - '&cGo back'

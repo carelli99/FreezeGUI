@@ -1,0 +1,9 @@
+name: FreezeGUI
+version: 1.1
+author: Maymity
+main: it.maymity.freezegui.Main
+commands:
+  freeze:
+    description: With this command you can Freeze a player
+  unfreeze:
+    description: With this command you can unFreeze a player
