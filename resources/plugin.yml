@@ -1,5 +1,5 @@
 name: FreezeGUI
-version: 1.6
+version: 1.7
 author: Maymity
 main: it.maymity.freezegui.Main
 commands:

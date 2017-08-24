@@ -1,11 +1,7 @@
 package it.maymity.freezegui;
 
-import it.maymity.freezegui.commands.Freeze;
-import it.maymity.freezegui.commands.Unfreeze;
-import it.maymity.freezegui.listeners.EntityDamageByEntity;
-import it.maymity.freezegui.listeners.InventoryClose;
-import it.maymity.freezegui.listeners.InventoryClick;
-import it.maymity.freezegui.listeners.PlayerQuit;
+import it.maymity.freezegui.commands.*;
+import it.maymity.freezegui.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
@@ -75,6 +71,7 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new InventoryClose(), this);
         Bukkit.getPluginManager().registerEvents(new InventoryClick(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerMove(), this);
     }
 
     private void registerExecutors() {
