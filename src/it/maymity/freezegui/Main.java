@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin implements Listener {
 
     Logger log;
-    public static double config_version = 1.2;
+    public static double config_version = 1.3;
 
     public void onEnable() {
         System.out.println("FreezeGUI > Start plugin...");
