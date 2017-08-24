@@ -1,6 +1,6 @@
-settings.config_version: 1.2
-
-prefix: '&7[&bFreeze&eGUI&7]&r '
+settings:
+ config_version: 1.2
+ prefix: '&7[&bFreeze&eGUI&7]&r '
 
 messages:
  no_permission: '&cYou don''t have permission to perform this command!'

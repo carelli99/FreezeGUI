@@ -1,6 +1,7 @@
 package it.maymity.freezegui.listeners;
 
 import it.maymity.freezegui.Utils;
+import it.maymity.freezegui.managers.MessagesManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,7 +19,7 @@ public void onPlayerQuit(PlayerQuitEvent event) {
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.hasPermission("freezegui.use"))
-                Utils.getInstance().sendPluginMessage(player, Utils.getInstance().getConfig().getString("messages.quit_message").replaceAll("%player%", p.getName()));
+                MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.quit_message").replaceAll("%player%", p.getName()));
         }
     }
 }
