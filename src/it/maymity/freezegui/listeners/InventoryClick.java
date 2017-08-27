@@ -30,6 +30,7 @@ public class InventoryClick implements Listener {
                 } else if (inventory.getName().equals(Utils.getInstance().getSure().getName())) {
                     if (clicked.getType() != null) {
                         if ((clicked.getType() == Material.valueOf(Utils.getInstance().getConfig().getString("suregui.Items." + 1 + ".material").toUpperCase())) && (clicked.getDurability() == Utils.getInstance().getConfig().getInt("suregui.Items." + 1 + ".damage"))) {
+                            Utils.getInstance().removeFreeze(player);
                             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), Utils.getInstance().getConfig().getString("commands.punish_command").replaceAll("%player%", ((Player) event.getWhoClicked()).getDisplayName()));
                         } else if ((clicked.getType() == Material.valueOf(Utils.getInstance().getConfig().getString("suregui.Items." + 2 + ".material").toUpperCase())) && (clicked.getDurability() == Utils.getInstance().getConfig().getInt("suregui.Items." + 2 + ".damage"))) {
                             player.openInventory(Utils.getInstance().getFreezeInventory());
