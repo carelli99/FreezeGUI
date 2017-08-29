@@ -52,4 +52,3 @@ public class Freeze implements CommandExecutor {
             return true;
         }
     }
-

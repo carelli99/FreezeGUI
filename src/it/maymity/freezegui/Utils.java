@@ -17,6 +17,8 @@ public class Utils {
     private FileConfiguration config;
     private Inventory freeze;
     private Inventory sure;
+    private Inventory freezeall;
+    private boolean freezeallcheck = false;
 
     public static synchronized Utils getInstance() {
         if (instance == null) {
@@ -38,8 +40,16 @@ public class Utils {
         return sure;
     }
 
+    public Inventory getFreezeAll() {
+        return freezeall;
+    }
+
     public ArrayList getFreezeList() {
         return FreezeList;
+    }
+
+    public Boolean getFreezeallcheck() {
+        return freezeallcheck;
     }
 
     public void setFreeze(Player p) {
@@ -50,6 +60,10 @@ public class Utils {
     public void removeFreeze(Player p) {
         FreezeList.remove(p);
 
+    }
+
+    public void setBoolFreezeAll(boolean b){
+        freezeallcheck = b;
     }
 
     public static void setinvItem(Inventory inv, String invname, int numberitem) {
@@ -78,7 +92,8 @@ public class Utils {
         getInstance().freeze.setItem(slot, item);
         else if(invname == "suregui")
             getInstance().sure.setItem(slot, item);
-
+        else if(invname == "freezeallgui")
+            getInstance().freezeall.setItem(slot, item);
     }
 
     public Inventory getFreezeInventory() {
@@ -94,6 +109,12 @@ public class Utils {
         setinvItem(sure, "suregui",1);
         setinvItem(sure, "suregui",2);
         return sure;
+    }
+
+    public Inventory getFreezeAllInventory() {
+        freezeall = Bukkit.createInventory(null, 9, ChatColor.translateAlternateColorCodes('&', Utils.getInstance().getConfig().getString("freezeallgui.display_name")));
+        setinvItem(freezeall,"freezeallgui", 1);
+        return freezeall;
     }
 
 }

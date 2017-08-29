@@ -9,19 +9,34 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryType;
 
-
 public class InventoryClose implements Listener {
 
     @EventHandler
-    public void onInvClose(InventoryCloseEvent event) {
+    public void onInventoryClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
         Inventory inventory = event.getInventory();
         if (Utils.getInstance().getFreezeList().contains(player)) {
-            if ((inventory.getName().equals(Utils.getInstance().getFreeze().getName())) || (inventory.getName().equals(Utils.getInstance().getSure().getName()))) {
-                    Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
-                        if(player.getOpenInventory().getType() != InventoryType.CHEST)
-                        player.openInventory(inventory);
-                    }, 5L);
+            if (inventory != null) {
+                if (inventory.getName() != null) {
+                    if (!inventory.getName().isEmpty()) {
+                        if (inventory.getName().equals(Utils.getInstance().getFreeze().getName())) {
+                            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
+                                if(player.getOpenInventory().equals(Utils.getInstance().getSure().getName()) || player.getOpenInventory().equals(Utils.getInstance().getFreezeAll().getName()))
+                                player.openInventory(Utils.getInstance().getFreezeInventory());
+                            }, 5L);
+                        } else if (inventory.getName().equals(Utils.getInstance().getSure().getName())) {
+                            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
+                                if(player.getOpenInventory().equals(Utils.getInstance().getFreeze().getName()) || player.getOpenInventory().equals(Utils.getInstance().getFreezeAll().getName()))
+                                player.openInventory(Utils.getInstance().getSureInventory());
+                            }, 5L);
+                        } else if (inventory.getName().equals(Utils.getInstance().getFreezeAll().getName())) {
+                            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
+                                if(player.getOpenInventory().equals(Utils.getInstance().getFreeze().getName()) || player.getOpenInventory().equals(Utils.getInstance().getSure().getName()))
+                                player.openInventory(Utils.getInstance().getFreezeAllInventory());
+                            }, 5L);
+                        }
+                    }
+                }
             }
         }
     }

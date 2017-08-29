@@ -1,5 +1,5 @@
 name: FreezeGUI
-version: 1.8
+version: 2.0
 author: Maymity
 main: it.maymity.freezegui.Main
 commands:
@@ -7,3 +7,7 @@ commands:
     description: With this command you can Freeze a player
   unfreeze:
     description: With this command you can unFreeze a player
+  freezeall:
+    description: With this command you can Freeze all player
+  unfreezeall:
+    description: With this command you can UnFreeze all player

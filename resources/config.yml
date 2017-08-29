@@ -1,15 +1,19 @@
 settings:
- config_version: 1.3
+ config_version: 2.0
  prefix: '&7[&bFreeze&eGUI&7]&r '
 
 messages:
  no_permission: '&cYou don''t have permission to perform this command!'
  freeze_usage: '&cCorrect usage: /freeze (Player Name)'
  unfreeze_usage: '&cCorrect usage: /unfreeze (Player Name)'
+ freezeall_usage: '&cCorrect usage: /freezeall'
+ unfreezeall_usage: '&cCorrect usage: /unfreezeall'
  no_freeze_yourself: '&cYou can''t Freeze yourself!'
  no_freeze_player: '&cYou can''t Freeze this player!'
  no_unfreeze_player: '&cYou can''t Unfreeze this player!'
+ no_freezeall: '&cThe server isn''t Freezed!'
  already_freeze: '&cThis player is already Freezed!'
+ already_freezeall: '&cThe server is already Freezed!'
  no_freeze: '&cThis player isn''t Freezed!'
  freeze_message: '&cYou have freezed &e%player%!'
  unfreeze_message: '&cYou have unfreezed &e%player%!'
@@ -18,6 +22,10 @@ messages:
  quit_message: '&e%player% &7e'' uscito mentre era in Freeze!'
  notifyfreeze_message: '&cYou are now &eFreezed!'
  notifyunfreeze_message: '&cYou are now &eUnFreezed!'
+ freezeall: '&cAll Player are now Freezed!'
+ unfreezeall: '&cAll Player are now unFreezed!'
+ no_freezeall: '&cThere aren''t player to Freeze!'
+ no_unfreezeall: '&cThere aren''t player to unFreeze!'
 
 commands:
  punish_command: 'tempban %player% 7d Hack'
@@ -79,3 +87,15 @@ suregui:
    slot: 6
    lore:
    - '&cGo back'
+
+freezeallgui:
+ display_name: '&c&lFreeze ALL!'
+ Items:
+  1:
+   material: BOOK
+   damage: 0
+   amount: 1
+   name: '&c&lFreeze ALL'
+   slot: 4
+   lore:
+   - '&cAll Player are Freezed'
