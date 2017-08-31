@@ -1,6 +1,7 @@
 settings:
- config_version: 2.0
+ config_version: 2.1
  prefix: '&7[&bFreeze&eGUI&7]&r '
+ check_update_on_join: true
 
 messages:
  no_permission: '&cYou don''t have permission to perform this command!'
@@ -27,6 +28,7 @@ messages:
  no_freezeall: '&cThere aren''t player to Freeze!'
  no_unfreezeall: '&cThere aren''t player to unFreeze!'
  freezeall_item_click: '&cAll server are Freezed'
+ update_message: '&7A new version of &eFreezeGUI &7is available!'
 
 commands:
  punish_command: 'tempban %player% 7d Hack'

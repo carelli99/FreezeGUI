@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin implements Listener {
 
     Logger log;
-    public static double config_version = 2.0;
+    public static double config_version = 2.1;
 
     public void onEnable() {
         System.out.println("FreezeGUI > Start plugin...");
@@ -26,6 +26,8 @@ public class Main extends JavaPlugin implements Listener {
             SpigotUpdater updater = new SpigotUpdater(this, 46176);
             try {
                 if (updater.checkForUpdates()) {
+                    Utils.getInstance().setBoolUpdate(true);
+                    Utils.getInstance().setUpdateLink(updater.getResourceURL());
                     System.out.println("========================================================");
                     System.out.println("FreezeGUI Update Checker");
                     System.out.println("There is a new update available");
@@ -76,6 +78,7 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new BlockBreak(), this);
         Bukkit.getPluginManager().registerEvents(new BlockPlace(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerDropItem(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
     }
 
     private void registerExecutors() {

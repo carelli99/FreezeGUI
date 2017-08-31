@@ -14,20 +14,22 @@ public class FreezeAll implements CommandExecutor {
             int cont = 0;
             Player player = (Player) sender;
             if (args.length == 0) {
-                if (player.hasPermission("freezegui.use")) {
+                if (player.hasPermission("freezegui.freezeall")) {
                         if (Utils.getInstance().getFreezeallcheck())
                             MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.already_freezeall"));
                         else {
                             Utils.getInstance().setBoolFreezeAll(true);
                             for (Player p : Bukkit.getOnlinePlayers()) {
                                 if (!p.hasPermission("freezegui.use")) {
-                                    if (!player.getName().equals(p.getName())) {
+                                    if(!p.hasPermission("freezegui.freezeall")){
+                                      if (!player.getName().equals(p.getName())) {
                                         cont++;
                                         Utils.getInstance().setFreeze(p);
                                         p.openInventory(Utils.getInstance().getFreezeAllInventory());
                                         MessagesManager.getInstance().sendMessage(p, Utils.getInstance().getConfig().getString("messages.notifyfreeze_message"));
                                     }
                                 }
+                              }
                             }
                             if (cont == 0)
                                 MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.no_freezeall"));

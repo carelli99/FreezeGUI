@@ -19,6 +19,8 @@ public class Utils {
     private Inventory sure;
     private Inventory freezeall;
     private boolean freezeallcheck = false;
+    private boolean newupdate = false;
+    private String updatelink;
 
     public static synchronized Utils getInstance() {
         if (instance == null) {
@@ -52,9 +54,12 @@ public class Utils {
         return freezeallcheck;
     }
 
+    public Boolean getNewUpdateCheck() { return newupdate;}
+
+    public String getUpdateLink() { return updatelink; }
+
     public void setFreeze(Player p) {
         FreezeList.add(p);
-
     }
 
     public void removeFreeze(Player p) {
@@ -64,6 +69,14 @@ public class Utils {
 
     public void setBoolFreezeAll(boolean b){
         freezeallcheck = b;
+    }
+
+    public void setBoolUpdate(boolean b){
+        newupdate = b;
+    }
+
+    public void setUpdateLink(String b){
+        updatelink = b;
     }
 
     public static void setinvItem(Inventory inv, String invname, int numberitem) {

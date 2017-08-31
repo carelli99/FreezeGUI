@@ -14,7 +14,7 @@ public class UnfreezeAll implements CommandExecutor {
             int cont = 0;
             Player player = (Player) sender;
             if (args.length == 0) {
-                if (player.hasPermission("freezegui.use")) {
+                if (player.hasPermission("freezegui.freezeall")) {
                     if (!Utils.getInstance().getFreezeallcheck())
                         MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.no_freezeall"));
                     else {
