@@ -16,10 +16,10 @@ public void onPlayerQuit(PlayerQuitEvent event) {
         if (Utils.getInstance().getFreezeList().contains(p)) {
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), Utils.getInstance().getConfig().getString("commands.slog_command").replaceAll("%player%", ((p.getDisplayName()))));
             Utils.getInstance().removeFreeze(p);
-        }
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            if (player.hasPermission("freezegui.use"))
-                MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.quit_message").replaceAll("%player%", p.getName()));
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                if (player.hasPermission("freezegui.use"))
+                    MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.quit_message").replaceAll("%player%", p.getName()));
+            }
         }
     }
 }

@@ -26,6 +26,7 @@ messages:
  unfreezeall: '&cAll Player are now unFreezed!'
  no_freezeall: '&cThere aren''t player to Freeze!'
  no_unfreezeall: '&cThere aren''t player to unFreeze!'
+ freezeall_item_click: '&cAll server are Freezed'
 
 commands:
  punish_command: 'tempban %player% 7d Hack'

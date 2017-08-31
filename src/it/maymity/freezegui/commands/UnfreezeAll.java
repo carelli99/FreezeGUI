@@ -20,14 +20,12 @@ public class UnfreezeAll implements CommandExecutor {
                     else {
                         Utils.getInstance().setBoolFreezeAll(false);
                         for (Player p : Bukkit.getOnlinePlayers()) {
-                            if (!p.hasPermission("freezegui.use")) {
-                                if (!player.getName().equals(p.getName())) {
+                            if (Utils.getInstance().getFreezeList().contains(p)) {
                                     cont++;
                                     Utils.getInstance().removeFreeze(p);
                                     p.closeInventory();
                                     MessagesManager.getInstance().sendMessage(p, Utils.getInstance().getConfig().getString("messages.notifyunfreeze_message"));
                                 }
-                            }
                         }
                         if (cont == 0)
                             MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.no_unfreezeall"));

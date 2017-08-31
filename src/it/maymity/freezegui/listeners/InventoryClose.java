@@ -15,28 +15,25 @@ public class InventoryClose implements Listener {
     public void onInventoryClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
         Inventory inventory = event.getInventory();
-        if (Utils.getInstance().getFreezeList().contains(player)) {
+        if (Utils.getInstance().getFreezeList().contains(player) && !Utils.getInstance().getFreezeallcheck()) {
             if (inventory != null) {
                 if (inventory.getName() != null) {
                     if (!inventory.getName().isEmpty()) {
-                        if (inventory.getName().equals(Utils.getInstance().getFreeze().getName())) {
+                        if ((inventory.getName().equals(Utils.getInstance().getFreeze().getName())) || (inventory.getName().equals(Utils.getInstance().getSure().getName()))) {
                             Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
-                                if(player.getOpenInventory().equals(Utils.getInstance().getSure().getName()) || player.getOpenInventory().equals(Utils.getInstance().getFreezeAll().getName()))
-                                player.openInventory(Utils.getInstance().getFreezeInventory());
-                            }, 5L);
-                        } else if (inventory.getName().equals(Utils.getInstance().getSure().getName())) {
-                            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
-                                if(player.getOpenInventory().equals(Utils.getInstance().getFreeze().getName()) || player.getOpenInventory().equals(Utils.getInstance().getFreezeAll().getName()))
-                                player.openInventory(Utils.getInstance().getSureInventory());
-                            }, 5L);
-                        } else if (inventory.getName().equals(Utils.getInstance().getFreezeAll().getName())) {
-                            Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
-                                if(player.getOpenInventory().equals(Utils.getInstance().getFreeze().getName()) || player.getOpenInventory().equals(Utils.getInstance().getSure().getName()))
-                                player.openInventory(Utils.getInstance().getFreezeAllInventory());
+                                if (player.getOpenInventory().getType() != InventoryType.CHEST)
+                                    player.openInventory(inventory);
                             }, 5L);
                         }
                     }
                 }
+            }
+        }
+        else if (Utils.getInstance().getFreezeallcheck()){
+            if(inventory.getName().equals(Utils.getInstance().getFreezeAll().getName())){
+                Bukkit.getScheduler().runTaskLater(Bukkit.getPluginManager().getPlugin("FreezeGUI"), () -> {
+                    player.openInventory(Utils.getInstance().getFreezeAllInventory());
+                }, 5L);
             }
         }
     }
