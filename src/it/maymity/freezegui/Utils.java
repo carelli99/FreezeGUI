@@ -64,7 +64,6 @@ public class Utils {
 
     public void removeFreeze(Player p) {
         FreezeList.remove(p);
-
     }
 
     public void setBoolFreezeAll(boolean b){
