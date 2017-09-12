@@ -1,5 +1,5 @@
 settings:
- config_version: 2.1
+ config_version: 2.4
  prefix: '&7[&bFreeze&eGUI&7]&r '
  check_update_on_join: true
 
@@ -9,6 +9,7 @@ messages:
  unfreeze_usage: '&cCorrect usage: /unfreeze (Player Name)'
  freezeall_usage: '&cCorrect usage: /freezeall'
  unfreezeall_usage: '&cCorrect usage: /unfreezeall'
+ reload_usage: '&cCorrect usage: /freezegui reload'
  no_freeze_yourself: '&cYou can''t Freeze yourself!'
  no_freeze_player: '&cYou can''t Freeze this player!'
  no_unfreeze_player: '&cYou can''t Unfreeze this player!'
@@ -29,6 +30,7 @@ messages:
  no_unfreezeall: '&cThere aren''t player to unFreeze!'
  freezeall_item_click: '&cAll server are Freezed'
  update_message: '&7A new version of &eFreezeGUI &7is available!'
+ reload: '&cPlugin reloaded'
 
 commands:
  punish_command: 'tempban %player% 7d Hack'

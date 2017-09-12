@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin implements Listener {
 
     Logger log;
-    public static double config_version = 2.1;
+    public static double config_version = 2.4;
 
     public void onEnable() {
         System.out.println("FreezeGUI > Start plugin...");
@@ -86,5 +86,6 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginCommand("unfreeze").setExecutor(new Unfreeze());
         Bukkit.getPluginCommand("freezeall").setExecutor(new FreezeAll());
         Bukkit.getPluginCommand("unfreezeall").setExecutor(new UnfreezeAll());
+        Bukkit.getPluginCommand("freezegui").setExecutor(new FreezeGui());
     }
 }
