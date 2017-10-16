@@ -15,9 +15,12 @@ public class PlayerJoin implements Listener {
         Player player = event.getPlayer();
         if (Utils.getInstance().getConfig().getBoolean("settings.check_update_on_join")) {
             if (player.hasPermission("freezegui.checkupdate")) {
-                if(Utils.getInstance().getNewUpdateCheck())
-                    MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.update_message"));
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cDownload:&e "+ Utils.getInstance().getUpdateLink()));
+                if (Utils.getInstance().getBoolUpdate()) {
+                    if (Utils.getInstance().getNewUpdateCheck()) {
+                        MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.update_message"));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cDownload:&e " + Utils.getInstance().getUpdateLink()));
+                    }
+                }
             }
         }
     }

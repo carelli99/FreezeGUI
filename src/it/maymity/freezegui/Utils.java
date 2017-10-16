@@ -58,9 +58,9 @@ public class Utils {
 
     public String getUpdateLink() { return updatelink; }
 
-    public void setFreeze(Player p) {
-        FreezeList.add(p);
-    }
+    public Boolean getBoolUpdate(){ return newupdate; }
+
+    public void setFreeze(Player p) { FreezeList.add(p); }
 
     public void removeFreeze(Player p) {
         FreezeList.remove(p);
