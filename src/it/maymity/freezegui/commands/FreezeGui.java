@@ -16,8 +16,8 @@ public class FreezeGui implements CommandExecutor {
             if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("reload")) {
                     if (player.hasPermission("freezegui.reload")){
-                        MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.reload"));
                         Bukkit.getPluginManager().getPlugin("FreezeGUI").reloadConfig();
+                        MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.reload"));
                         }
                     else
                         MessagesManager.getInstance().sendMessage(player, Utils.getInstance().getConfig().getString("messages.no_permission"));

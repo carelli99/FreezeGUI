@@ -54,8 +54,6 @@ public class Utils {
         return freezeallcheck;
     }
 
-    public Boolean getNewUpdateCheck() { return newupdate;}
-
     public String getUpdateLink() { return updatelink; }
 
     public Boolean getBoolUpdate(){ return newupdate; }
